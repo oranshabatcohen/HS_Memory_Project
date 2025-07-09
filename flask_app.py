@@ -132,6 +132,11 @@ def show_cards():
     <body>
         <h1>🃏 Guess the Hearthstone Cards</h1>
 
+        <div class="guess-box">
+            <input type="text" id="guess" placeholder="Type card name..." />
+            <button onclick="checkGuess()">Guess</button>
+        </div>
+
         <form method="get">
             <div class="rarity-filter">
                 {% for rarity in ['Common', 'Rare', 'Epic', 'Legendary', 'All'] %}
@@ -162,14 +167,9 @@ def show_cards():
             </div>
         {% endfor %}
 
-        <div class="guess-box">
-            <input type="text" id="guess" placeholder="Type card name..." />
-            <button onclick="checkGuess()">Guess</button>
-        </div>
-
         <script>
             function clean(str) {
-                return str.toLowerCase().replace(/\\s+/g, " ").trim();
+                return str.toLowerCase().replace(/\s+/g, " ").trim();
             }
 
             async function checkGuess() {
